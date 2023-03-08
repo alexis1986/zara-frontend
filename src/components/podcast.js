@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ApiService from '../service/api'
 import Moment from 'moment';
 import PodcastHeader from './podcast-header';
@@ -29,7 +29,7 @@ function Podcast() {
 
     useEffect(() => {
         ApiService.getEpisodesByPodcastId(podcastId).then(data => setEpisodes(data));
-    },[podcastId]) 
+    },[]) 
 
     return (
         <>
@@ -44,13 +44,13 @@ function Podcast() {
                     </tr>
                 </thead>
                 <tbody>
-                {   episodes && (episodes.map(({trackId, trackName, releaseDate, trackTimeMillis}) => (
+                {   episodes?.map(({trackId, trackName, releaseDate, trackTimeMillis}) => (
                         <tr key={trackId}>
-                            <td>{trackName}</td>
+                            <td><Link to={`/podcast/${podcastId}/episode/${trackId}`}>{trackName}</Link></td>
                             <td>{Moment(releaseDate).format("DD/MM/yyyy")}</td>
                             <td>{msConversion(trackTimeMillis)}</td>
                         </tr>
-                    )))
+                    ))
                 }            
                 </tbody>
             </table>

@@ -15,7 +15,7 @@ function App() {
         <Routes >
           <Route exact path='/' element={ <Home/> } />
           <Route exact path='/podcast/:podcastId' element={ <Podcast/> } />
-          <Route exact path='/podcast/:podcastId/episode/:episodeId' component={ <Episode/> } />
+          <Route exact path='/podcast/:podcastId/episode/:episodeId' element={ <Episode/> } />
         </Routes>
       </div>
     </Router>

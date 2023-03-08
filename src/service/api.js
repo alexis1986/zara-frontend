@@ -22,7 +22,20 @@ class ApiService {
         const url = `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode`;
         const data = await this.useApiCall(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
         
-        return JSON.parse(data.contents).results;
+        return JSON.parse(data.contents).results.map(({trackId, trackName, description, episodeUrl, releaseDate, trackTimeMillis}) =>                       
+            ({
+                description,
+                episodeUrl,
+                trackId,
+                trackName,
+                releaseDate,
+                trackTimeMillis                        
+            }));
+    }
+
+    async getEpisodeByPodcastIdAndEpisodeId(podcastId, episodeId) {
+        const data = await this.getEpisodesByPodcastId(podcastId);
+        return data.find(({trackId}) => trackId == episodeId);
     }
 
     async useApiCall(url) {
