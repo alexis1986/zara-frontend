@@ -7,9 +7,15 @@ class ApiService {
             ({
                 id: podcast.id.attributes["im:id"],
                 name: podcast["im:name"].label,
+                summary: podcast.summary.label,
                 image: podcast["im:image"][podcast["im:image"].length - 1].label,
                 author: podcast["im:artist"].label                        
             }));        
+    }
+
+    async getPodcastById(podcastId) {
+        const data = await this.getPodcasts();
+        return data.find(({id}) => id === podcastId);
     }
 
     async getEpisodesByPodcastId(podcastId) {

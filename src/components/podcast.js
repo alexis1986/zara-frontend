@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ApiService from '../service/api'
 import Moment from 'moment';
+import PodcastHeader from './podcast-header';
 
 function Podcast() {
     const { podcastId } = useParams();
@@ -27,14 +28,12 @@ function Podcast() {
       }
 
     useEffect(() => {
-        ApiService.getEpisodesByPodcastId(podcastId).then(data => {
-            console.log(data);
-            setEpisodes(data)
-        })
+        ApiService.getEpisodesByPodcastId(podcastId).then(data => setEpisodes(data));
     },[podcastId]) 
 
     return (
         <>
+            <PodcastHeader podcastId={podcastId}/>
             <div>Episodes: {episodes && episodes.length}</div>
             <table>
                 <thead>
