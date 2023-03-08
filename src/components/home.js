@@ -3,6 +3,10 @@ import ApiService from '../service/api';
 
 function Home() {
     const [podcasts, setPodcasts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const onChangeHandle = event => setSearchTerm(event.target.value);
+    const filteredItems = podcasts.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.author.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
     useEffect(() => {
         ApiService.getPodcasts()
@@ -11,9 +15,10 @@ function Home() {
 
     return (
         <>
-            <h1>Home</h1>
+            <p>{filteredItems.length}</p>
+            <input type="text" value={searchTerm} onChange={onChangeHandle}/>
             <ul>
-                {podcasts.map((podcast) => (
+                {filteredItems.map((podcast) => (
                     <li key={ podcast.id }>
                         <img src={podcast.image} alt={podcast.name}/>
                         <p>{ podcast.name }</p>
