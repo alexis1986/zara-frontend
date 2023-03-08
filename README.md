@@ -17,3 +17,8 @@ v0.0.1
 * Ruteo hacia las 3 paginas.
 * Contiene un mensaje de "Cargando..." que luego sera reemplazado por el indicador visual.
 * NO contiene estilos 
+
+v0.0.2
+* Link de la cabecera para dirigir al Home.
+* Muestra la cantidad de podcasts y el filtrado por Nombre y Autor.
+* Aumento del timeout para desaparecer el mensaje de "Cargando..."
