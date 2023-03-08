@@ -1,11 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-function Header(props) {
+function Header() {
+    const location = useLocation();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 500);
+
+        return () => clearTimeout(timer);
+      }, [location]);
+
     return (
         <div className="header">
             <Link to="/">Podcasters</Link>
-            {props.loading && (<p>Cargando ...</p>)}
+            {loading && (<p>Cargando ...</p>)}
         </div>
     );
 }
