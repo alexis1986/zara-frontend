@@ -12,7 +12,6 @@ Construye la aplicación, dejandola preparada en el directorio `dist` para despl
 
 ## Control de versiones
 v0.0.1
-
 * Home mostrando los 100 podcasts mas escuchados.
 * Ruteo hacia las 3 paginas.
 * Contiene un mensaje de "Cargando..." que luego sera reemplazado por el indicador visual.
@@ -22,3 +21,9 @@ v0.0.2
 * Link de la cabecera para dirigir al Home.
 * Muestra la cantidad de podcasts y el filtrado por Nombre y Autor.
 * Aumento del timeout para desaparecer el mensaje de "Cargando..."
+
+v0.0.3
+* Refactor de Header: encapsulamiento de toda la logica en el componente.
+* Pantalla de detalles de un Podcast.
+* Creación del Header del Podcast.
+* La info obtenida de la API se cachea por 24 horas.
