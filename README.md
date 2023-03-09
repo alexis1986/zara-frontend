@@ -1,5 +1,7 @@
 # Prueba Tecnica de Backend para Shakers (https://www.shakersworks.com/)
 
+[Enunciado](enunciado.pdf)
+
 ## Comandos para ejecutar el proyecto
 
 ### `npm start`
@@ -27,3 +29,10 @@ v0.0.3
 * Pantalla de detalles de un Podcast.
 * Creación del Header del Podcast.
 * La info obtenida de la API se cachea por 24 horas.
+
+V1.0.0
+* Vista del detalle de un episodio
+* Estilos de toda la app
+* Renombre del componente PodcastHeader que pasa a ser PodcastAside
+* Reemplazo del mensaje "Cargando... " por un spinner 
+* Refactorizacion del Header para que el spinner funcione como deberia.
